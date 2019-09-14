@@ -9,3 +9,6 @@ class doktorDB(DBTools):
         return self.ekleme(TABLO=self.TABLO,SUTUN=["DOK_ADI","DOK_SOYADI","DOK_UNVAN","DOK_UZ_ID"],
 DEGER=["'"+ad+"'","'"+soyad+"'",unv,uzman])
 
+    def unvanListele(self):
+        return self.listeleme(TABLO="ST_SOZLUK",SUTUN=["ALAN_ID","ALAN_ADI"],SART="TABLO_ID = 1")
+
