@@ -9,9 +9,11 @@ class DoktorUI(QWidget):
         self.initUI()
 
     def initUI(self):
-        self.pencere = uic.loadUi(r"C:\Users\vektorel\Documents\GitHub\Python9DestktopProject\GUI\doktor.ui")
+        self.pencere = uic.loadUi(r"C:\Users\vektorel\Documents\GitHub\Python9DesktopProject\GUI\doktor.ui")
         self.pencere.btKaydet.clicked.connect(self.Calistir)
-        self.pencere.btTemizle.clicked.connect(self.unvanDoldur)
+        self.pencere.cmbUzmanlik.currentIndexChanged.connect(self.cmbDegisti)
+        self.AlanDoldur()
+        self.unvanDoldur()
         self.pencere.show()
 
     def Calistir(self):
@@ -25,12 +27,24 @@ class DoktorUI(QWidget):
             sonuc =  QMessageBox.question(self,"Soru","Yağmur Yağacak mı?",QMessageBox.Yes | QMessageBox.No,QMessageBox.Yes)
             if sonuc == QMessageBox.Yes:
                 QMessageBox.information(self,"Bilgi","bencede",QMessageBox.Ok,QMessageBox.Ok)
+
+    
+    def cmbDegisti(self):
+        print(self.pencere.cmbUzmanlik.currentIndex())
+
     def unvanDoldur(self):
         veriTabani = doktorDB()
-        liste = veriTabani.unvanListele()
+        liste = veriTabani.SozlukListeGetir("1")
         self.pencere.cmbUnvan.addItem("Seçiniz","-1")
         for alanid,alanad in liste:
             self.pencere.cmbUnvan.addItem(alanad,alanid)
+
+    def AlanDoldur(self):
+        veriTabani = doktorDB()
+        liste = veriTabani.SozlukListeGetir("2")
+        self.pencere.cmbUzmanlik.addItem("Seçiniz","-1")
+        for alanid,alanad in liste:
+            self.pencere.cmbUzmanlik.addItem(alanad,alanid)
         
 if __name__ == "__main__":
     app = QApplication(sys.argv)
