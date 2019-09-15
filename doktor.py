@@ -34,24 +34,19 @@ class DoktorUI(QWidget):
     def DoktorSecim(self):
         metin  = self.pencere.doktorList.currentItem().text().split("-")
         gelen = self.veriTabani.doktorListeGetir("1",metin[0])[0]
-        print(gelen)
         self.doldurma(list(gelen))
         
 
     def tabloDoldur(self,liste=[]):
-        if liste:
+        self.pencere.doktorList.clear()
+        if not liste:
             liste = self.veriTabani.doktorListeGetir()
         for id,adi,soyadi,unv,uzm in liste:
             item = QListWidgetItem("{}-{} {}".format(id,adi,soyadi))
             self.pencere.doktorList.addItem(item)
     
     def cmbDegisti(self):
-        try:
-            self.pencere.doktorList.clear()
-            gelen = self.veriTabani.doktorListeGetir("2",str(self.pencere.cmbUzmanlik.currentIndex()))[0]
-            self.tabloDoldur(gelen)
-        except:
-            pass
+        pass
 
     def unvanDoldur(self):
         liste = self.veriTabani.SozlukListeGetir("1")
@@ -72,9 +67,7 @@ class DoktorUI(QWidget):
             self.pencere.cmbUnvan.setCurrentIndex(0)
             self.pencere.cmbUzmanlik.setCurrentIndex(0)
             self.pencere.lblDokID.setText("0")
-            self.pencere.doktorList.clear()
             self.tabloDoldur()
-
         else:
             self.pencere.txtAdi.setText(gelen[1])
             self.pencere.txtSoyadi.setText(gelen[2])
