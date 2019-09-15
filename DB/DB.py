@@ -54,10 +54,11 @@ class DBTools():
                     degerler = degerler.rstrip(",")
             sorgu = "INSERT INTO {} ({}) values ({})".format(tablo,sutunlar,degerler)
             self.dbBaglan()
+            print(sorgu)
             self.cur.execute(sorgu)
             self.db.commit()
             return True
-        except:
+        except Exception:
             return False
         finally:
             self.db.close()

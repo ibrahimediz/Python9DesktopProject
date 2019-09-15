@@ -6,8 +6,12 @@ class doktorDB(DBTools):
         super(doktorDB,self).__init__(os.getcwd()+os.sep+r"DB\hastane.db")
         self.TABLO = "DOKTOR_BILGI"
     
-    def doktorEkle(self,ad,soyad,unv,uzman):
-        return self.ekleme(TABLO=self.TABLO,SUTUN=["DOK_ADI","DOK_SOYADI","DOK_UNVAN","DOK_UZ_ID"],
+    def doktorEkleGuncelle(self,ad,soyad,unv,uzman,ID="0"):
+        if ID != "0":
+            return self.guncelle(TABLO=self.TABLO,SUTUN=["DOK_ADI","DOK_SOYADI","DOK_UNVAN","DOK_UZ_ID"],
+DEGER=["'"+ad+"'","'"+soyad+"'",unv,uzman],SART="DOK_ID = "+str(ID))
+        else:
+            return self.ekleme(TABLO=self.TABLO,SUTUN=["DOK_ADI","DOK_SOYADI","DOK_UNVAN","DOK_UZ_ID"],
 DEGER=["'"+ad+"'","'"+soyad+"'",unv,uzman])
 
     
@@ -20,7 +24,7 @@ DEGER=["'"+ad+"'","'"+soyad+"'",unv,uzman])
         sart = ""
         if filtre == "1" :
             sart = " DOK_ID = "+param
-        elif filtre == "2":
+        elif filtre == "2" and param not in ("-1","0"):
             sart = " DOK_UZ_ID =" + param
         else:
             sart = " DOK_ID > 0 "

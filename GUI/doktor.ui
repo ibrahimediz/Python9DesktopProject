@@ -60,7 +60,7 @@
     <item row="0" column="1">
      <widget class="QLabel" name="lblDokID">
       <property name="text">
-       <string>_______</string>
+       <string>0</string>
       </property>
      </widget>
     </item>
