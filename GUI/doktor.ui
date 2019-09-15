@@ -58,7 +58,7 @@
      </widget>
     </item>
     <item row="0" column="1">
-     <widget class="QLabel" name="label_6">
+     <widget class="QLabel" name="lblDokID">
       <property name="text">
        <string>_______</string>
       </property>

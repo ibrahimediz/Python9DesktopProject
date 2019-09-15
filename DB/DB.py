@@ -27,6 +27,7 @@ class DBTools():
             if not sart:
                 sart = "1 = 1"
             sorgu = "SELECT {} FROM {} WHERE {}".format(sutunlar,tablo,sart)
+            print(sorgu)
             self.cur.execute(sorgu)
             return  self.cur.fetchall()
         except:
