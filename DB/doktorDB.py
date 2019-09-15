@@ -14,3 +14,6 @@ DEGER=["'"+ad+"'","'"+soyad+"'",unv,uzman])
 
     def SozlukListeGetir(self,param):
         return self.listeleme(TABLO="ST_SOZLUK",SUTUN=["ALAN_ID","ALAN_ADI"],SART="TABLO_ID = "+param)
+
+    def doktorListeGetir(self):
+        return self.listeleme(TABLO=self.TABLO,SUTUN=["DOK_ID","DOK_ADI","DOK_SOYADI"],SART=" DOK_ID > 0 ")

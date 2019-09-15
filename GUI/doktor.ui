@@ -104,22 +104,5 @@
   </widget>
  </widget>
  <resources/>
- <connections>
-  <connection>
-   <sender>btTemizle</sender>
-   <signal>clicked()</signal>
-   <receiver>Dialog</receiver>
-   <slot>hide()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>239</x>
-     <y>375</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>220</x>
-     <y>215</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
 </ui>

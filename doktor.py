@@ -1,5 +1,5 @@
 import sys
-from PyQt5.QtWidgets import QApplication,QWidget,QMessageBox
+from PyQt5.QtWidgets import QApplication,QWidget,QMessageBox,QListWidgetItem
 from PyQt5 import uic
 from DB.doktorDB import doktorDB 
 
@@ -14,6 +14,7 @@ class DoktorUI(QWidget):
         self.pencere.cmbUzmanlik.currentIndexChanged.connect(self.cmbDegisti)
         self.AlanDoldur()
         self.unvanDoldur()
+        self.tabloDoldur()
         self.pencere.show()
 
     def Calistir(self):
@@ -28,6 +29,12 @@ class DoktorUI(QWidget):
             if sonuc == QMessageBox.Yes:
                 QMessageBox.information(self,"Bilgi","bencede",QMessageBox.Ok,QMessageBox.Ok)
 
+    def tabloDoldur(self):
+        veriTabani = doktorDB()
+        liste = veriTabani.doktorListeGetir()
+        for adi,soyadi,id in liste:
+            item = QListWidgetItem("{}-{} {}".format(id,adi,soyadi))
+            self.pencere.doktorList.addItem(item)
     
     def cmbDegisti(self):
         print(self.pencere.cmbUzmanlik.currentIndex())
