@@ -1,6 +1,7 @@
 import sys
 from PyQt5.QtWidgets import QApplication,QMainWindow,QMessageBox,QTableWidgetItem,QMessageBox
 from PyQt5 import uic
+from PyQT5.QtCore import pyqtslot,pyqtsignal
 from DB.HastaDB import HastaDBTool
 from doktor import DoktorUI
 import os
@@ -17,7 +18,7 @@ class AnaMenu(QMainWindow):
         self.win.btKaydet.clicked.connect(self.Kaydet)
         self.win.tblHasta.doubleClicked.connect(self.Secim)
         self.win.btYeni.clicked.connect(self.doldur)
-        # self.win.doktorislem.triggered.connect(self.doktorAc)
+        self.win.doktorislem.triggered.connect(self.doktorAc)
         # self.win.txtTC.textChanged.connect(self.deneme)
         self.TabloDoldur()
         self.win.show()
@@ -41,8 +42,8 @@ class AnaMenu(QMainWindow):
             self.win.txtSoyadi.setText("")
             self.win.txtTel.setText("")
 
-    def doktorAc(self):
-        self.doktor = DoktorUI()
+    def doktorAc(self,nesne):
+        self.doktor = DoktorUI(self)
 
     def TabloDoldur(self):
         self.win.tblHasta.clear()
@@ -73,6 +74,12 @@ class AnaMenu(QMainWindow):
             self.doldur()
 
 
+    @pyqtslot(int)
+    def doktorEkle(self,val=0):
+        self.win.cmbPol.addItem(str(val))
+
+    def tetikleme(self):
+        self.doktor.dokSecim.connect(self.doktorEkle)
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)

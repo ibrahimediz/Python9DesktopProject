@@ -2,11 +2,13 @@ import sys
 from PyQt5.QtWidgets import QApplication,QWidget,QMessageBox,QListWidgetItem
 from PyQt5 import uic
 from DB.doktorDB import doktorDB
+from PyQT5.QtCore import pyqtslot,pyqtsignal
 import os
 
 class DoktorUI(QWidget):
+    dokSecim = pyqtsignal(int)
     def __init__(self):
-        super().__init__()
+        super(DoktorUI,self).__init__()
         self.initUI()
 
     def initUI(self):
@@ -34,6 +36,9 @@ class DoktorUI(QWidget):
     def DoktorSecim(self):
         metin  = self.pencere.doktorList.currentItem().text().split("-")
         gelen = self.veriTabani.doktorListeGetir("1",metin[0])[0]
+        
+        self.dokSecim.emit(int(gelen))
+        self.tetikleme()
         self.doldurma(list(gelen))
         
 
@@ -74,6 +79,9 @@ class DoktorUI(QWidget):
             self.pencere.cmbUnvan.setCurrentIndex(int(gelen[3]))
             self.pencere.cmbUzmanlik.setCurrentIndex(int(gelen[4]))
             self.pencere.lblDokID.setText(str(gelen[0]))
+
+
+
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
