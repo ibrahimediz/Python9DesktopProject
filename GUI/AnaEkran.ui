@@ -27,7 +27,7 @@
      <enum>QTabWidget::North</enum>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">
@@ -127,14 +127,14 @@
         <widget class="QTableWidget" name="tableWidget"/>
        </item>
        <item row="0" column="1">
-        <widget class="QLabel" name="label_7">
+        <widget class="QLabel" name="lblID">
          <property name="text">
           <string>0</string>
          </property>
         </widget>
        </item>
        <item row="1" column="1">
-        <widget class="QLineEdit" name="lineEdit"/>
+        <widget class="QLineEdit" name="txtTC"/>
        </item>
        <item row="2" column="1">
         <widget class="QLineEdit" name="lineEdit_2"/>
@@ -180,14 +180,14 @@
     <property name="title">
      <string>İşlemler</string>
     </property>
-    <addaction name="actionDoktor_lemleri"/>
+    <addaction name="doktorislem"/>
     <addaction name="action_la_lemleri"/>
     <addaction name="actionRandevu_lemleri"/>
    </widget>
    <addaction name="menu_lemler"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
-  <action name="actionDoktor_lemleri">
+  <action name="doktorislem">
    <property name="text">
     <string>Doktor İşlemleri</string>
    </property>
