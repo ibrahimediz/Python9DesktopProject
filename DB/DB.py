@@ -34,7 +34,6 @@ class DBTools():
             return None
         finally:
             self.db.close()
-                
 
     def ekleme(self,**kwargs):
         try:

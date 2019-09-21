@@ -124,12 +124,12 @@
         </widget>
        </item>
        <item row="6" column="1">
-        <widget class="QTableWidget" name="tableWidget"/>
+        <widget class="QTableWidget" name="tblHasta"/>
        </item>
        <item row="0" column="1">
         <widget class="QLabel" name="lblID">
          <property name="text">
-          <string>0</string>
+          <string/>
          </property>
         </widget>
        </item>
@@ -137,26 +137,26 @@
         <widget class="QLineEdit" name="txtTC"/>
        </item>
        <item row="2" column="1">
-        <widget class="QLineEdit" name="lineEdit_2"/>
+        <widget class="QLineEdit" name="txtAdi"/>
        </item>
        <item row="3" column="1">
-        <widget class="QLineEdit" name="lineEdit_3"/>
+        <widget class="QLineEdit" name="txtSoyadi"/>
        </item>
        <item row="4" column="1">
-        <widget class="QLineEdit" name="lineEdit_4"/>
+        <widget class="QLineEdit" name="txtTel"/>
        </item>
        <item row="5" column="1">
-        <widget class="QComboBox" name="comboBox"/>
+        <widget class="QComboBox" name="cmbPol"/>
        </item>
        <item row="7" column="1">
-        <widget class="QPushButton" name="pushButton_2">
+        <widget class="QPushButton" name="btKaydet">
          <property name="text">
           <string>Kaydet</string>
          </property>
         </widget>
        </item>
        <item row="8" column="1">
-        <widget class="QPushButton" name="pushButton_3">
+        <widget class="QPushButton" name="btYeni">
          <property name="text">
           <string>Yeni</string>
          </property>
